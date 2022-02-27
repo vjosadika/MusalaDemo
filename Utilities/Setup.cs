@@ -51,30 +51,35 @@ namespace MusalaDemo.Utilities
         {
             extent.Flush();
 
-            string fromMail = ConfigurationManager.AppSettings["fromEmail"];
-            string password = Base64Decode(ConfigurationManager.AppSettings["passwordEmail"]);
-            string toMail = ConfigurationManager.AppSettings["toEmail"];
-            string subject = "Test of " + DateTime.UtcNow;
+            //********************************************************************
+            //In order for this to work you have to change the credentials in App.config and uncomment these lines of code
+            //********************************************************************
 
-            MimeMessage message = new MimeMessage();
-            message.From.Add(MailboxAddress.Parse(fromMail));
-            message.To.Add(MailboxAddress.Parse(toMail));
 
-            var builder = new BodyBuilder();
+            //string fromMail = ConfigurationManager.AppSettings["fromEmail"];
+            //string password = Base64Decode(ConfigurationManager.AppSettings["passwordEmail"]);
+            //string toMail = ConfigurationManager.AppSettings["toEmail"];
+            //string subject = "Test of " + DateTime.UtcNow;
 
-            builder.HtmlBody = string.Format(@"<h3>Test Mail</h3>");
-            builder.Attachments.Add(@"C:\Users\Lenovo\Desktop\Musala\index.html");
-            message.Body = builder.ToMessageBody();
-            message.Subject = subject;
+            //MimeMessage message = new MimeMessage();
+            //message.From.Add(MailboxAddress.Parse(fromMail));
+            //message.To.Add(MailboxAddress.Parse(toMail));
 
-            using (var client = new SmtpClient())
-            {
-                client.CheckCertificateRevocation = false;
-                await client.ConnectAsync("smtp.office365.com", 587, SecureSocketOptions.StartTls);
-                await client.AuthenticateAsync(fromMail, password);
-                await client.SendAsync(message);
-                await client.DisconnectAsync(true);
-            }
+            //var builder = new BodyBuilder();
+
+            //builder.HtmlBody = string.Format(@"<h3>Test Mail</h3>");
+            //builder.Attachments.Add(@"C:\Users\Lenovo\Desktop\Musala\index.html");
+            //message.Body = builder.ToMessageBody();
+            //message.Subject = subject;
+
+            //using (var client = new SmtpClient())
+            //{
+            //    client.CheckCertificateRevocation = false;
+            //    await client.ConnectAsync("smtp.office365.com", 587, SecureSocketOptions.StartTls);
+            //    await client.AuthenticateAsync(fromMail, password);
+            //    await client.SendAsync(message);
+            //    await client.DisconnectAsync(true);
+            //}
 
         }
 

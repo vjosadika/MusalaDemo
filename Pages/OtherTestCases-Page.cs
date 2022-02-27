@@ -229,8 +229,6 @@ namespace MusalaDemo.Pages
 
         public OtherTestCases_Page PrintConsolePosInformation()
         {
-            IList<IWebElement> jobPositionLinks = _driver.FindElements(By.XPath("//div[@class='card-container']/a"));
-            IList<IWebElement> jobPositions = _driver.FindElements(By.XPath("//div[@class='card']/div[@class='front']/h2"));
             IList<IWebElement> articles = _driver.FindElements(By.XPath("//*[@id='content']/section/div[2]/article"));
 
             var cityXpath = _driver.FindElement(By.XPath("//*[@id='get_location']/option[4]"));
@@ -246,6 +244,4 @@ namespace MusalaDemo.Pages
             return this;
         }
     }
-
-
 }
